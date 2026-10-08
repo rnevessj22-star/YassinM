@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>لسه الحكاية مخلصتش 🤍</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Tahoma,sans-serif;
+    background:linear-gradient(
+        180deg,
+        #fff8fa,
+        #fcebef,
+        #fffafb
+    );
+    color:#4b3039;
+    overflow-x:hidden;
+}
+
+/* خلفية بسيطة */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+
+    background-image:
+    radial-gradient(
+        #c87890 1px,
+        transparent 1px
+    );
+
+    background-size:28px 28px;
+    opacity:.12;
+}
+
+.container{
+    width:min(900px,92%);
+    margin:auto;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:25px 0;
+}
+
+.hero-card{
+    width:100%;
+    text-align:center;
+
+    padding:55px 25px;
+
+    background:rgba(255,255,255,.88);
+
+    border:1px solid #efd3da;
+
+    border-radius:35px;
+
+    box-shadow:
+    0 25px 75px rgba(105,45,65,.12);
+
+    backdrop-filter:blur(12px);
+}
+
+.small-title{
+    color:#a95b72;
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:clamp(40px,9vw,70px);
+    line-height:1.25;
+    color:#582f3e;
+}
+
+h1 span{
+    color:#b95f7b;
+}
+
+.hero-text{
+    max-width:650px;
+    margin:22px auto 0;
+
+    color:#775d66;
+
+    line-height:2;
+
+    font-size:16px;
+}
+
+/* زر الأغنية */
+
+.music-button{
+    margin-top:28px;
+
+    padding:14px 25px;
+
+    border-radius:50px;
+
+    border:1px solid #e5bbc6;
+
+    background:#fff;
+
+    color:#733c4e;
+
+    font-family:inherit;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.music-button:hover{
+    transform:translateY(-3px);
+}
+
+.music-button.playing{
+    background:#733c4e;
+    color:white;
+}
+
+.scroll-link{
+    display:block;
+
+    margin-top:22px;
+
+    color:#a95b72;
+
+    text-decoration:none;
+
+    font-size:13px;
+}
+
+/* SECTIONS */
+
+section{
+    padding:75px 0;
+}
+
+.section-title{
+    text-align:center;
+
+    font-size:30px;
+
+    color:#59303f;
+
+    margin-bottom:8px;
+}
+
+.section-subtitle{
+    text-align:center;
+
+    color:#8c6b75;
+
+    font-size:14px;
+
+    margin-bottom:35px;
+}
+
+/* الصور */
+
+.gallery{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:16px;
+}
+
+.photo{
+    position:relative;
+
+    overflow:hidden;
+
+    background:white;
+
+    padding:5px;
+
+    border:1px solid #efd7dd;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 12px 30px rgba(100,45,60,.10);
+}
+
+.photo:first-child{
+    grid-column:span 2;
+}
+
+.photo img{
+    width:100%;
+
+    height:300px;
+
+    display:block;
+
+    object-fit:cover;
+
+    border-radius:19px;
+
+    transition:.5s;
+}
+
+.photo:first-child img{
+    height:390px;
+}
+
+.photo:hover img{
+    transform:scale(1.04);
+}
+
+.caption{
+    position:absolute;
+
+    right:14px;
+    bottom:14px;
+
+    padding:6px 13px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.92);
+
+    color:#693746;
+
+    font-size:12px;
+}
+
+/* الرسالة */
+
+.letter{
+    max-width:750px;
+
+    margin:auto;
+
+    padding:36px 28px;
+
+    background:#fff;
+
+    border:1px solid #efd5dc;
+
+    border-radius:28px;
+
+    box-shadow:
+    0 18px 50px rgba(100,45,60,.08);
+
+    color:#644c55;
+
+    line-height:2.3;
+
+    font-size:15px;
+}
+
+.letter strong{
+    color:#a54f69;
+}
+
+/* الدعاء */
+
+.dua{
+    max-width:750px;
+
+    margin:auto;
+
+    padding:44px 25px;
+
+    text-align:center;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #71394c,
+        #b05f79
+    );
+
+    border-radius:30px;
+
+    box-shadow:
+    0 20px 50px rgba(110,50,70,.18);
+}
+
+.dua h2{
+    font-size:28px;
+
+    margin-bottom:18px;
+}
+
+.dua p{
+    color:#fff4f6;
+
+    line-height:2.4;
+
+    font-size:15px;
+}
+
+/* النهاية */
+
+.final{
+    text-align:center;
+
+    padding-bottom:90px;
+}
+
+.final h2{
+    font-size:30px;
+
+    color:#59303f;
+
+    margin-bottom:12px;
+}
+
+.final p{
+    color:#806b73;
+
+    line-height:2;
+}
+
+.open-button{
+    margin-top:25px;
+
+    padding:13px 25px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#b65e79;
+
+    color:white;
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.open-button:hover{
+    transform:translateY(-3px);
+}
+
+/* الرسالة المخفية */
+
+.hidden-message{
+    max-height:0;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    max-width:700px;
+
+    margin:auto;
+
+    transition:.8s;
+}
+
+.hidden-message.show{
+    max-height:500px;
+
+    opacity:1;
+
+    margin-top:25px;
+}
+
+.message-box{
+    padding:30px;
+
+    background:#fff0f3;
+
+    border:1px solid #edcbd3;
+
+    border-radius:25px;
+
+    color:#674d57;
+
+    line-height:2.3;
+}
+
+.message-box strong{
+    color:#a54f69;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    color:#aa8b95;
+
+    font-size:12px;
+
+    padding:25px;
+}
+
+/* موبايل */
+
+@media(max-width:650px){
+
+    section{
+        padding:55px 0;
+    }
+
+    .hero-card{
+        padding:45px 20px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .photo:first-child{
+        grid-column:auto;
+    }
+
+    .photo img,
+    .photo:first-child img{
+        height:270px;
+    }
+
+    .letter{
+        padding:27px 20px;
+    }
+
+    .dua{
+        padding:35px 20px;
+    }
+
+    .section-title{
+        font-size:27px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- الصفحة الرئيسية -->
+
+<header class="hero">
+
+<div class="container">
+
+<div class="hero-card">
+
+<div class="small-title">
+رسالة صغيرة من قلبي ليكي
+</div>
+
+<h1>
+لسه <span>الحكاية</span> مخلصتش
+</h1>
+
+<p class="hero-text">
+
+يمكن الأيام دي مش أسهل أيامنا،
+ويمكن البعد والصمت وجعونا...
+
+<br>
+
+بس أنا مؤمن إن بعض الحكايات
+محتاجة صبر علشان تكمل بشكل أجمل.
+
+</p>
+
+
+<!-- زر الأغنية -->
+
+<button
+class="music-button"
+id="musicButton"
+onclick="toggleMusic()">
+
+♫ تشغيل الأغنية
+
+</button>
+
+
+<a
+href="#memories"
+class="scroll-link">
+
+انزلي وشوفي باقي الرسالة ↓
+
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- الأغنية -->
+
+<audio
+id="song"
+loop
+preload="metadata">
+
+<source
+src="song.m4a"
+type="audio/mp4">
+
+</audio>
+
+
+
+<!-- الذكريات -->
+
+<section id="memories">
+
+<div class="container">
+
+<h2 class="section-title">
+ذكرياتنا
+</h2>
+
+<p class="section-subtitle">
+حاجات بسيطة... بس ليها مكان كبير في القلب 🤍
+</p>
+
+
+<div class="gallery">
+
+
+<div class="photo">
+
+<img
+src="photo1.png"
+alt="ذكرى">
+
+<span class="caption">
+ذكرى 🤍
+</span>
+
+</div>
+
+
+
+<div class="photo">
+
+<img
+src="photo2.png"
+alt="ذكرى">
+
+<span class="caption">
+تفصيلة صغيرة
+</span>
+
+</div>
+
+
+
+<div class="photo">
+
+<img
+src="photo3.png"
+alt="ذكرى">
+
+<span class="caption">
+ذكرى
+</span>
+
+</div>
+
+
+
+<div class="photo">
+
+<img
+src="photo4.png"
+alt="ذكرى">
+
+<span class="caption">
+من الحاجات اللي فاكرها
+</span>
+
+</div>
+
+
+
+<div class="photo">
+
+<img
+src="IMG_2968.jpeg"
+alt="رسمة">
+
+<span class="caption">
+رسمة من القلب 🤍
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- الرسالة -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+كلمتين ليكي
+</h2>
+
+<p class="section-subtitle">
+اقريهم براحتك...
+</p>
+
+
+<div class="letter">
+
+أنا عارف إن الفترة دي ممكن تكون تقيلة،
+وعارف إن الصبر ساعات بيبقى أصعب من أي حاجة تانية.
+
+<br><br>
+
+بس نفسي نفتكر إننا مش بنحاول نرجع نفس اللي كان بينا وخلاص...
+
+<br><br>
+
+<strong>
+إحنا عايزين نرجع أحسن من الأول.
+</strong>
+
+<br><br>
+
+كل واحد فينا يكبر، يتعلم،
+ويقرب من ربنا،
+
+ولما ييجي الوقت الصح
+نبقى مستعدين لحياة أحسن.
+
+<br><br>
+
+فلو في يوم حسيتِ إنك تعبتِ،
+افتكري إن في حد بيتمنى لكِ الخير،
+وبيتمنى إن ربنا يكتب لنا الخير
+في الوقت الصح.
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- الدعاء -->
+
+<section>
+
+<div class="container">
+
+<div class="dua">
+
+<h2>
+دعوة لينا 🤍
+</h2>
+
+<p>
+
+اللهم إن كان اجتماعنا خيرًا لنا،
+فاكتبه لنا ويسره لنا،
+
+واجعل بيننا مودة ورحمة،
+
+وارزقنا الصبر والرضا،
+
+واجمعنا في الوقت الصحيح
+وبالطريقة التي ترضيك.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- النهاية -->
+
+<section class="final">
+
+<div class="container">
+
+<h2>
+والكلمة الأخيرة...
+</h2>
+
+<p>
+يمكن الحكاية أخدت وقت،
+بس ده مش معناه إنها انتهت.
+</p>
+
+
+<button
+class="open-button"
+onclick="openMessage()">
+
+افتحي الرسالة الأخيرة
+
+</button>
+
+
+<div
+class="hidden-message"
+id="finalMessage">
+
+<div class="message-box">
+
+أنا مش بوعدك إن الطريق هيكون سهل...
+
+<br><br>
+
+لكن بوعدك إن الأمل موجود.
+
+<br><br>
+
+نصبر، ندعي،
+ونشتغل على نفسنا...
+
+<br><br>
+
+ولو ربنا كتب لنا الخير مع بعض،
+هنلاقي طريقنا لبعض في الوقت الصح.
+
+<br><br>
+
+<strong>
+ووقتها، نفسي نبص لكل الأيام دي
+ونقول: كان الصبر مستاهل. 🤍
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+صفحة صغيرة... بكلام كبير من القلب.
+
+</footer>
+
+
+
+<script>
+
+/* تشغيل وإيقاف الأغنية */
+
+const song =
+document.getElementById("song");
+
+const musicButton =
+document.getElementById("musicButton");
+
+
+function toggleMusic(){
+
+    if(song.paused){
+
+        song.play()
+
+        .then(function(){
+
+            musicButton.textContent =
+            "♫ إيقاف الأغنية";
+
+            musicButton.classList.add(
+            "playing"
+            );
+
+        })
+
+        .catch(function(){
+
+            alert(
+            "تأكد إن ملف song.m4a موجود بجوار index.html"
+            );
+
+        });
+
+    }
+
+    else{
+
+        song.pause();
+
+        musicButton.textContent =
+        "♫ تشغيل الأغنية";
+
+        musicButton.classList.remove(
+        "playing"
+        );
+
+    }
+
+}
+
+
+/* الرسالة الأخيرة */
+
+function openMessage(){
+
+    const message =
+    document.getElementById(
+    "finalMessage"
+    );
+
+    message.classList.toggle(
+    "show"
+    );
+
+}
+
+</script>
+
+
+</body>
+</html>
